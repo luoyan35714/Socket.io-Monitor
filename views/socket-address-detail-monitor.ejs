@@ -1,0 +1,32 @@
+<div class="container">
+	<h1 class="page-header"><small><a class='btn btn-primary' href="/monitor/socket<%=urlParameter=='/'?'/baseurldefaultmonitor':urlParameter%>">Back</a></small> Address <code><%=addressname%></code> - Monitor</h1>
+        <div class="row">
+		<div class="col-md-10">
+			<table class="table table-striped">
+                <tr>
+					<th>#</th>
+					<th>ID</th>
+					<th>Host Address</th>
+					<th>Source Page</th>
+					<th>Detail</th>
+					<th>Date(Server)</th>
+					<!-- <th>Operations</th> -->
+			    </tr>
+			    <%
+                    var i = 0
+                    for(var connection in connections){
+                    i++
+                %>
+                    <tr>
+	                    <td><%=i%></td>
+	                    <td><%=connection%></td>
+	                    <td><%=addressname%></td>
+						<td><%=connections[connection].target%></td>
+						<td><%=connections[connection].detail%></td>
+						<td><%=connections[connection].date%></td>
+                    </tr>
+                <%}%>
+			</table>
+		</div>
+	</div>
+</div>

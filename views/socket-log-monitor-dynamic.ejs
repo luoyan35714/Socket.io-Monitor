@@ -1,0 +1,31 @@
+<script type="text/javascript">
+	var content
+	var intervalId
+	var controlFlag
+
+	function refreshLog(){
+		content = $.ajax({url:"http://localhost:3000/monitor/log/socket/timer",async:false}).responseText
+		document.getElementById('content').innerHTML = content.replace(new RegExp('&lt;br&gt;', 'g'), '<br>')
+	}
+	
+	setTimeout('refreshLog()', 100)
+
+	function control(){
+		if(controlFlag){
+			clearInterval(intervalId)
+			document.getElementById("control").innerHTML = "Start Refresh"
+			controlFlag = false
+		}else{
+			intervalId = setInterval('refreshLog()', 2000)
+			document.getElementById("control").innerHTML = "Stop Refresh"
+			controlFlag = true
+		}
+	}
+</script>
+
+<div class="container">
+	<h1 class="page-header"><small><a class='btn btn-primary' href="/monitor/socket/list">Back</a></small> <%=title%>
+	<small><a id="control" class='btn btn-primary' a href="javascript:void(0);" onclick="control()">Start Refresh</a></small></h1>
+	<div id="content" class="jumbotron">
+	</div>
+</div>

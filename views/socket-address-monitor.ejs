@@ -1,0 +1,31 @@
+<div class="container">
+<h1 class="page-header"><small class="text-right"><a href="/monitor/socket/list" class="btn btn-primary">Back</a></small> Target <code><%=urlParameter%></code> - Monitor</h1>
+        <div class="row">
+		<div class="col-md-10">
+			<table class="table table-striped">
+                <tr>
+					<th>#</th>
+					<th>Host Address</th>
+					<th>Count</th>
+					<th>Operations</th>
+			    </tr>
+			    <%
+                    var i = 0
+                    for(var conn in addresses){
+                        i++
+						var count=0;
+						for(item in addresses[conn]){
+							count++;
+						}
+                %>
+                <tr>
+                    <td><%=i%></td>
+                    <td><%=conn%></td>
+                    <td><%=count%></td>
+                    <td><a class='btn' href="/monitor/socket<%=urlParameter=='/'?'/baseurldefaultmonitor':urlParameter%>/<%=conn%>">view</a></td>
+                </tr>
+                <%}%>
+			</table>
+		</div>
+	</div>
+</div>

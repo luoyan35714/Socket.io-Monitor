@@ -1,0 +1,14 @@
+<div class="container">
+	<h1 class="page-header"><small><a class='btn btn-primary' href="/monitor/socket/list">Back</a></small> <%=title%></h1>
+	<div id="content" class="jumbotron">
+	</div>
+</div>
+<script type='text/javascript'>
+	var content = "<%=logcontent.replace(new RegExp('\r\n', 'g'), '<br>')%>";
+	var flag = <%=flag%>;
+	if(flag){
+		document.getElementById('content').innerHTML = content.replace(new RegExp('&lt;br&gt;', 'g'), '<br>');
+	}else{
+		document.getElementById('content').innerHTML = '<code>' + content.replace(new RegExp('&lt;br&gt;', 'g'), '<br>')+'</code>';
+	}
+</script>

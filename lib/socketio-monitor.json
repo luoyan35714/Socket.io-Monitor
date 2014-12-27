@@ -1,0 +1,18 @@
+{
+  "appenders": [
+    {
+	    "type"		: "file",
+		"filename"	: "/logs/monitor.log",
+		"maxLogSize": 20480,
+		"backups"	: 0,
+		"category"	: "monitor-web"
+	},
+	{	
+		"type"		: "file",
+		"filename"	: "/logs/monitor.log",
+		"maxLogSize": 20480,
+		"backups"	: 0,
+		"category"	: "monitor-target"
+	}
+  ]
+}
