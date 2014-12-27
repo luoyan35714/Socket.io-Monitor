@@ -87,7 +87,7 @@ node index.js monitor
 ##Socket.io Monitor使用
 
 * 进入系统界面为
-![index page](http://www.hifreud.com/images/blog/nodejs/3_socket_io_monitor/1_index_page.png)
+	
 
 	- Static Logs：指的是点击之后加载一次LOG，如果有新LOG需要自己手动刷新获取（经测试，当LOG文件过大，系统加崩溃， 默认20M大小。）
 	- Dynamic Logs: 指的是可以每隔2秒钟读取一次LOG，页面中有提供启停LOG刷新功能，如下所示
