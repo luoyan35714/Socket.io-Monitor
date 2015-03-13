@@ -3,52 +3,53 @@ Socket.io-Monitor
 
 
 ##Socket.io Monitor是什么
-Socket.io Monitor是一个对Socket.io连接的监控插件，Socket.io Monitor基于Node.js开发，分为2部分，监控插件和监控平台。监控平台依赖node.js插件express, ejs
+Socket.io Monitor是一个对Socket.io连接的监控插件 <br />
+Socket.io Monitor基于Node.js开发，分为2部分，监控插件和监控平台,现阶段的两部分是捆绑安装在一起的。监控平台依赖node.js插件express, ejs, 页面实现基于Bootstrap <br />
 项目地址[https://github.com/luoyan35714/Socket.io-Monitor](https://github.com/luoyan35714/Socket.io-Monitor)
 
 ##Socket.io Monitor文件清单
-
-| monitor.js |
-| lib/socketio-monitor.json |
-| public/css/bootstrap.css.map |
-| public/css/bootstrap.min.css |
-| public/css/bootstrap-theme.css.map |
-| public/css/bootstrap-theme.min.css |
-| public/fonts/glyphicons-halflings-regular.eot |
-| public/fonts/glyphicons-halflings-regular.svg |
-| public/fonts/glyphicons-halflings-regular.ttf |
-| public/fonts/glyphicons-halflings-regular.woff |
-| public/js/bootstrap.min.js |
-| public/js/html5shiv.js |
-| public/js/jquery-1.8.0.min.js |
-| public/js/respond.min.js |
-| views/socket-address-detail-monitor.ejs |
-| views/socket-address-monitor.ejs |
-| views/socket-log-monitor-dynamic.ejs |
-| views/socket-log-monitor-static.ejs |
-| views/socket-url-monitor.ejs |
-| views/template.ejs |
-
+```bash
+monitor.js 
+lib/socketio-monitor.json
+public/css/bootstrap.css.map
+public/css/bootstrap.min.css
+public/css/bootstrap-theme.css.map
+public/css/bootstrap-theme.min.css
+public/fonts/glyphicons-halflings-regular.eot
+public/fonts/glyphicons-halflings-regular.svg
+public/fonts/glyphicons-halflings-regular.ttf
+public/fonts/glyphicons-halflings-regular.woff
+public/js/bootstrap.min.js
+public/js/html5shiv.js
+public/js/jquery-1.8.0.min.js
+public/js/respond.min.js
+views/socket-address-detail-monitor.ejs
+views/socket-address-monitor.ejs
+views/socket-log-monitor-dynamic.ejs
+views/socket-log-monitor-static.ejs
+views/socket-url-monitor.ejs
+views/template.ejs |
+```
 ##Socket.io Monitor安装
 * 在运行文件同级目录下解压以上清单文件，包含
-
-| monitor.js |
-| public/* |
-| view/* |
-| lib/* |
-
+```bash
+monitor.js
+public/*
+view/*
+lib/*
+```
 * 安装第三方插件ejs，BodyParser，express-partials, log4js (如果已经安装可以跳过)
-
+```bash
 npm install express
 npm install socket.io
 npm install ejs
 npm install body-parser
 npm install express-partials
 npm install log4js
-
+```
 * 在代码中注册此插件
 
-{% highlight js%}
+```javascript
 var app=require(‘express’)
 var io=require(‘socket.io’)(require(‘http’).Server(app))
 
@@ -57,7 +58,7 @@ monitor.monitor(app)
 monitor.addMonitor(io) //监听根目录
 monitor.addMonitor(io.of("/url_1")) //监听目录url_1
 monitor.addMonitor(io.of("/url_2")) //监听目录url_2
-{% endhighlight %}
+```
 
 ##Socket.io Monitor启动
 
@@ -65,17 +66,17 @@ monitor.addMonitor(io.of("/url_2")) //监听目录url_2
 
 例如执行
 
-{% highlight c%}
+```bash
 node server.js monitor
-{% endhighlight %}
+```
 
 在浏览器输入`http://[host]:[port]/monitor/socket/list`即可查看监听状态
 
 ##Sample使用
 将Sample文件夹下的文件复制到主文件目录，执行
-{% highlight c%}
+```bash
 node index.js monitor
-{% endhighlight %}
+```
 
 然后在浏览器打开`http://localhost:3000/monitor/socket/list`
 
@@ -112,4 +113,4 @@ node index.js monitor
 * 监控和显示分离
 * 日志显示分离
 
-注意：此插件为了最小化使用服务器CPU和内存，没有采用实时推送刷新功能，所以，当登录页面监控之后，如果要查看最新数据，请手动刷新页面。
+> 注意：此插件为了最小化使用服务器CPU和内存，没有采用实时推送刷新功能，所以，当登录页面监控之后，如果要查看最新数据，请手动刷新页面。
