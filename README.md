@@ -2,12 +2,16 @@ Socket.io-Monitor
 =================
 
 
-##Socket.io Monitor是什么
+Socket.io Monitor是什么
+-----------------
+
 Socket.io Monitor是一个对Socket.io连接的监控插件 <br />
 Socket.io Monitor基于Node.js开发，分为2部分，监控插件和监控平台,现阶段的两部分是捆绑安装在一起的。监控平台依赖node.js插件express, ejs, 页面实现基于Bootstrap <br />
 项目地址[https://github.com/luoyan35714/Socket.io-Monitor](https://github.com/luoyan35714/Socket.io-Monitor)
 
-##Socket.io Monitor文件清单
+Socket.io Monitor文件清单
+-----------------
+
 ```bash
 monitor.js 
 lib/socketio-monitor.json
@@ -30,7 +34,9 @@ views/socket-log-monitor-static.ejs
 views/socket-url-monitor.ejs
 views/template.ejs |
 ```
-##Socket.io Monitor安装
+Socket.io Monitor安装
+-----------------
+
 * 在运行文件同级目录下解压以上清单文件，包含
 ```bash
 monitor.js
@@ -60,7 +66,8 @@ monitor.addMonitor(io.of("/url_1")) //监听目录url_1
 monitor.addMonitor(io.of("/url_2")) //监听目录url_2
 ```
 
-##Socket.io Monitor启动
+Socket.io Monitor启动
+-----------------
 
 在完成步骤3之后，在启动项后添加参数 monitor，正常启动项目入口js文件（例如server.js），获得启动的Server地址[host]和端口[port]
 
@@ -72,7 +79,9 @@ node server.js monitor
 
 在浏览器输入`http://[host]:[port]/monitor/socket/list`即可查看监听状态
 
-##Sample使用
+Sample使用
+-----------------
+
 将Sample文件夹下的文件复制到主文件目录，执行
 ```bash
 node index.js monitor
@@ -85,7 +94,8 @@ node index.js monitor
 打开多个`http://localhost:3000/server/test`，看下monitor界面会发生什么。
 
 
-##Socket.io Monitor使用
+Socket.io Monitor使用
+-----------------
 
 * 进入系统界面为
 	
@@ -101,18 +111,24 @@ node index.js monitor
 	![monitor detail](http://www.hifreud.com/images/blog/nodejs/3_socket_io_monitor/5_monitor_detail.png)
 	- 点击Back即可返回上一级
 
-##优势
+优势
+-----------------
+
 + 提供了可视化的Socket.io监控平台
 + 提供了日志查看功能
 + 最小化利用CPU和内存
 + 支持日志配置
 
-##缺点
+缺点
+-----------------
+
 * 连接信息存储在内存中，连接量在超过一定数量会导致内存溢出
 * 日志文件大小超过某值之后会导致程序假死（每次读取文件时间过长，解决办法是在Log4js中限制文件大小）
 * 监控和显示平台集成在一起
 
-##有待提高
+有待提高
+-----------------
+
 * 监控和显示分离
 * 日志显示分离
 
